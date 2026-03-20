@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Idul Fitri 1447 H</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #000f27;
+            --gold: #d4af37;
+            --glass-bg: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            /* Pastikan file background-masjid.jpg ada di folder yang sama */
+            background: url('background-masjid.jpg') no-repeat center center;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        /* Overlay gelap agar teks & efek glass lebih pop-out */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 10, 30, 0.6);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 420px; /* Standar Portrait Smartphone */
+            height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Efek Glassmorphism (Glassium) */
+        .glass-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 40px 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            text-align: center;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden; /* Menjaga asset WebP tetap di dalam */
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .year {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .main-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .closing {
+            font-weight: 400;
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* Styling Foto Asset WebP Anda */
+        .asset-foto {
+            position: absolute;
+            bottom: -10px; /* Sedikit keluar agar terlihat estetik */
+            right: -10px;
+            width: 180px; /* Sesuaikan ukuran */
+            opacity: 0.25; /* Opacity rendah agar hanya jadi pendukung */
+            filter: brightness(0.9);
+            z-index: -1; /* Berada di belakang teks agar teks mudah dibaca */
+            /* Efek fading bagian bawah/samping agar menyatu dengan glass */
+            mask-image: linear-gradient(to top left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
+            -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
+        }
+
+        /* Dekorasi tambahan (opsional) */
+        .decoration {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 40px;
+            opacity: 0.2;
+            color: var(--gold);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="glass-card">
+            <div class="decoration">☪</div>
+            
+            <h1>Taqabbalallahu Minna Wa Minkum</h1>
+            <div class="year">1447 H</div>
+
+            <p class="main-text">
+                <strong>Selamat Hari Raya Idul Fitri.</strong><br>
+                Mohon maaf lahir dan batin atas segala kekhilafan. Semoga silaturahmi kita tetap terjaga meski jarak memisahkan.
+            </p>
+
+            <p class="closing">Selamat berkumpul dengan keluarga tercinta!</p>
+
+            <img src="foto-hogi.webp" alt="Background Profile" class="asset-foto">
+        </div>
+    </div>
+
+</body>
+</html>
