@@ -25,6 +25,7 @@
             background-size: cover;
             position: relative;
             padding: 20px;
+            overflow: hidden; /* Mencegah scroll saat animasi kembang api */
         }
 
         body::before {
@@ -35,23 +36,59 @@
             z-index: 0;
         }
 
+        /* --- ANIMASI FADE IN & FLOATING --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- EFEK KEMBANG API (CSS Only) --- */
+        .firework {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            box-shadow: 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff;
+            animation: firework 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes firework {
+            0% { transform: translate(-50%, 60vh); width: 4px; opacity: 1; }
+            50% { width: 4px; opacity: 1; }
+            100% { 
+                width: 500px; 
+                opacity: 0; 
+                box-shadow: 0 -200px var(--gold), 150px -150px #fff, 200px 0 var(--gold), 150px 150px #fff, 0 200px var(--gold), -150px 150px #fff, -200px 0 var(--gold), -150px -150px #fff;
+            }
+        }
+
         /* Container Utama */
         .main-wrapper {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             display: flex;
-            flex-direction: column; /* Default: Atas-Bawah (Mobile) */
+            flex-direction: column;
             gap: 20px;
             width: 100%;
-            max-width: 440px; /* Lebar HP */
+            max-width: 440px;
             align-items: center;
         }
 
-        /* Standarisasi Kotak Glassium */
+        /* Standarisasi Kotak Glassium dengan Animasi */
         .glass-card {
             position: relative;
             width: 100%;
-            height: 45vh; /* Bagi dua tinggi layar di HP */
+            height: 45vh;
             min-height: 350px;
             padding: 30px;
             background: var(--glass-bg);
@@ -67,9 +104,20 @@
             text-align: center;
             color: #fff;
             overflow: hidden;
+            
+            /* Animasi Fade In */
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out forwards;
         }
 
-        /* Panel Kiri: Kaligrafi */
+        /* Kotak pertama animasi floating, kotak kedua delay */
+        .glass-card:nth-child(1) { 
+            animation: fadeInUp 1.2s ease-out forwards, floating 6s ease-in-out infinite 1.2s; 
+        }
+        .glass-card:nth-child(2) { 
+            animation-delay: 0.4s; /* Muncul sedikit terlambat */
+        }
+
         .img-container img {
             width: 85%;
             height: auto;
@@ -78,7 +126,6 @@
             filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
         }
 
-        /* Panel Kanan: Ucapan */
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
@@ -108,7 +155,6 @@
             font-size: 0.95rem;
         }
 
-        /* Asset Foto (Profile) tetap di belakang kotak ucapan */
         .asset-foto {
             position: absolute;
             bottom: -30px;
@@ -129,25 +175,23 @@
             color: var(--gold);
         }
 
-        /* RESPONSIVE: Mode Web / Desktop (Sampingan) */
         @media (min-width: 992px) {
             .main-wrapper {
-                flex-direction: row; /* Berubah jadi Kiri-Kanan */
-                max-width: 900px; /* Lebar gabungan dua kotak */
+                flex-direction: row;
+                max-width: 900px;
                 height: 80vh;
-                align-items: stretch; /* Tinggi kotak jadi sama otomatis */
+                align-items: stretch;
             }
-
-            .glass-card {
-                height: auto; /* Ikuti container */
-                flex: 1; /* Bagi rata lebar 50-50 */
-            }
-
+            .glass-card { height: auto; flex: 1; }
             h1 { font-size: 1.9rem; }
         }
     </style>
 </head>
 <body>
+
+    <div class="firework" style="left: 15%; animation-delay: 0.5s;"></div>
+    <div class="firework" style="left: 85%; animation-delay: 1.2s;"></div>
+    <div class="firework" style="left: 50%; top: 30%; animation-delay: 2s;"></div>
 
     <div class="main-wrapper">
         <div class="glass-card img-container">
