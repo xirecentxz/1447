@@ -21,7 +21,6 @@
             align-items: center;
             min-height: 100vh;
             font-family: 'Poppins', sans-serif;
-            /* Nama file background disesuaikan: background.webp */
             background: url('background.webp') no-repeat center center;
             background-size: cover;
             overflow: hidden;
@@ -65,6 +64,12 @@
             overflow: hidden; 
         }
 
+        /* Menjaga teks tetap di atas gambar */
+        h1, .year, .main-text, .closing, .decoration {
+            position: relative;
+            z-index: 1;
+        }
+
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
@@ -94,17 +99,19 @@
             font-style: italic;
         }
 
-        /* Nama file orang disesuaikan: orang.webp */
+        /* PERBAIKAN: Posisi di KIRI, Ukuran PERBESAR */
         .asset-foto {
             position: absolute;
-            bottom: -5px; 
-            right: -15px;
-            width: 180px; 
-            opacity: 0.25; 
+            bottom: -30px; /* Sedikit keluar agar terlihat estetik */
+            left: -15px; /* Pindah ke KIRI */
+            right: auto; /* Matikan posisi kanan */
+            width: 250px; /* Ukuran PERBESAR */
+            opacity: 0.25; /* Opacity rendah agar hanya jadi pendukung */
             filter: brightness(0.9);
-            z-index: -1;
-            mask-image: linear-gradient(to top left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
-            -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
+            z-index: 0; /* Berada di belakang teks agar teks mudah dibaca */
+            /* Efek fading agar menyatu dengan glass */
+            mask-image: linear-gradient(to top right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
+            -webkit-mask-image: linear-gradient(to top right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
         }
 
         .decoration {
