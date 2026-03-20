@@ -21,13 +21,12 @@
             align-items: center;
             min-height: 100vh;
             font-family: 'Poppins', sans-serif;
-            /* Pastikan file background-masjid.jpg ada di folder yang sama */
-            background: url('background-masjid.jpg') no-repeat center center;
+            /* Nama file background disesuaikan: background.webp */
+            background: url('background.webp') no-repeat center center;
             background-size: cover;
             overflow: hidden;
         }
 
-        /* Overlay gelap agar teks & efek glass lebih pop-out */
         body::before {
             content: "";
             position: absolute;
@@ -40,14 +39,13 @@
             position: relative;
             z-index: 1;
             width: 90%;
-            max-width: 420px; /* Standar Portrait Smartphone */
+            max-width: 420px; 
             height: 85vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Efek Glassmorphism (Glassium) */
         .glass-card {
             position: relative;
             width: 100%;
@@ -64,7 +62,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            overflow: hidden; /* Menjaga asset WebP tetap di dalam */
+            overflow: hidden; 
         }
 
         h1 {
@@ -96,21 +94,19 @@
             font-style: italic;
         }
 
-        /* Styling Foto Asset WebP Anda */
+        /* Nama file orang disesuaikan: orang.webp */
         .asset-foto {
             position: absolute;
-            bottom: -10px; /* Sedikit keluar agar terlihat estetik */
-            right: -10px;
-            width: 180px; /* Sesuaikan ukuran */
-            opacity: 0.25; /* Opacity rendah agar hanya jadi pendukung */
+            bottom: -5px; 
+            right: -15px;
+            width: 180px; 
+            opacity: 0.25; 
             filter: brightness(0.9);
-            z-index: -1; /* Berada di belakang teks agar teks mudah dibaca */
-            /* Efek fading bagian bawah/samping agar menyatu dengan glass */
+            z-index: -1;
             mask-image: linear-gradient(to top left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
             -webkit-mask-image: linear-gradient(to top left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
         }
 
-        /* Dekorasi tambahan (opsional) */
         .decoration {
             position: absolute;
             top: 20px;
@@ -119,7 +115,6 @@
             opacity: 0.2;
             color: var(--gold);
         }
-
     </style>
 </head>
 <body>
@@ -138,7 +133,7 @@
 
             <p class="closing">Selamat berkumpul dengan keluarga tercinta!</p>
 
-            <img src="foto-hogi.webp" alt="Background Profile" class="asset-foto">
+            <img src="orang.webp" alt="Background Profile" class="asset-foto">
         </div>
     </div>
 
